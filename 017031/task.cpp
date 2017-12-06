@@ -6,7 +6,7 @@ using namespace std;
 class Animal//Declaration of Animal class
 {
 public:
-	Animal()=default;//Default constructor for class Animal
+	Animal() = default;//Default constructor for class Animal
 	Animal(string name, int age);//Constructor overloading for class Animal
 	string getName();//Getter function for Name
 	int getAge();//Getter function for Age
@@ -23,7 +23,7 @@ private:
 Animal::Animal(string name, int age)//Function definition of overloaded constructor of class Animal
 {
 	setAge(age);
-	setName(name); 
+	setName(name);
 }
 string Animal::getName()//Getter function for Name
 {
@@ -52,7 +52,7 @@ void Animal::Action() //Function definition for Action
 
 void Animal::Introduce()//Function definition of Introduce
 {
-	cout <<"I am "<< getName()<<"and I am "<<Age<<" years old" << endl;
+	cout << "I am " << Name << " and I am " << Age << " years old" << endl;
 }
 
 
@@ -61,12 +61,12 @@ void Animal::Introduce()//Function definition of Introduce
 class Dog :public Animal//Declaration of class Dog with public inherited from class Animal
 {
 public:
-	Dog()=default;//Default constructor for class Dog
+	Dog() = default;//Default constructor for class Dog
 	Dog(string name, int age);//Constructor overloading for class Dog
 	virtual void Speak();//Virtual function Speak which can be overridden
 	virtual void Action();//Virtual function Action which can be overridden
 };
-Dog::Dog(string name, int age):Animal(name, age)//Function definition of overloaded constructor of class Dog
+Dog::Dog(string name, int age) :Animal(name, age)//Function definition of overloaded constructor of class Dog
 {
 	//Copying class Dog data to class Animal
 }
@@ -86,7 +86,7 @@ void Dog::Action()//Function definition for overridden Action
 class PetDog :public Dog//Declaration of class PetDog with public inherited from class Dog
 {
 public:
-	PetDog()=default;//Default constructor for class PetDog
+	PetDog() = default;//Default constructor for class PetDog
 	PetDog(string name, int age);//Constructor overloading for class PetDog
 	void Speak() override;//Overriding Speak function
 	void Action() override;//Overriding Action function
@@ -111,7 +111,7 @@ void PetDog::Action()//Function definition for overridden Action
 class StrayDog :public Dog//Declaration of class StrayDog with public inherited from class Dog
 {
 public:
-	StrayDog()=default;//Default constructor for class StrayDog
+	StrayDog() = default;//Default constructor for class StrayDog
 	StrayDog(string name, int age);//Constructor overloading for class StrayDog
 	void Speak() override;//Overriding Speak function
 	void Action() override;//Overriding Action function
@@ -136,7 +136,7 @@ void StrayDog::Action()//Function definition for overridden Action
 class Cat :public Animal//Declaration of class Cat with public inherited from class Animal
 {
 public:
-	Cat()=default;//Default constructor for class Cat
+	Cat() = default;//Default constructor for class Cat
 	Cat(string name, int age);//Constructor overloading for class Cat
 	void Speak() override;//Overriding Speak function
 	void Action() override;//Overriding Action function
@@ -162,13 +162,22 @@ int main()
 {
 	int a;
 	Animal* Animals[7];		//Declaring an array of 7 of object of Animal type pointer
-	Animal* Random = &Animal("Sam", 10);  //Declaring object pointers
-	Animal* Random1 = &Animal("Tom", 12);
-	Dog* Doge = &Dog("Doggy", 13);
-	StrayDog* StrayDoge = &StrayDog("Sobaka", 5);
-	PetDog* PetDoge = &PetDog("Doge", 6);
-	PetDog* PetDoge1 = &PetDog("Calculus", 6);
-	Cat* Kris = &Cat("Kot", 5);
+	Animal dummyRandom = Animal("Sam", 10);//Declaring object pointers
+	Animal* Random = &dummyRandom;
+	Animal dummyRandom1 = Animal("Tom", 12);
+	Animal* Random1 = &dummyRandom1;
+	Dog dummyDoge = Dog("Doggy", 13);
+	Dog* Doge = &dummyDoge;
+	StrayDog dummyStrayDoge = StrayDog("Sobaka", 5);
+	StrayDog* StrayDoge = &dummyStrayDoge;
+	PetDog dummyPetDoge = PetDog("Doge", 6);
+	PetDog* PetDoge = &dummyPetDoge;
+	PetDog dummyPetDoge1 = PetDog("Calculus", 6);
+	PetDog* PetDoge1 = &dummyPetDoge1;
+	Cat dummyKris = Cat("Kot", 5);
+	Cat* Kris = &dummyKris;
+
+
 
 	Animals[0] = Random;		//Assigning object as elements of Animal array
 	Animals[1] = Random1;
@@ -178,11 +187,11 @@ int main()
 	Animals[5] = PetDoge1;
 	Animals[6] = Kris;
 
-
 	for (a = 0; a < 7; a++)		//Looping the Speak and Introduce function of the object that are pointed to
 	{
 		Animals[a]->Introduce();
 		Animals[a]->Speak();
+		cout << endl;
 	}
 	system("pause");
 }
