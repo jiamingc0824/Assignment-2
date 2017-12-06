@@ -20,7 +20,6 @@ private:
 	int Age;//Age property of class Animal
 
 };
-
 Animal::Animal(string name, int age)//Function definition of overloaded constructor of class Animal
 {
 	setAge(age);
@@ -30,7 +29,6 @@ string Animal::getName()//Getter function for Name
 {
 	return Name;
 }
-
 void Animal::setName(string name)//Setter function for Name
 {
 	Name = name;
@@ -45,17 +43,19 @@ void Animal::setAge(int age)//Setter function for Age
 }
 void Animal::Speak() //Function definition for Speak
 {
-	//Empty
+	cout << "I don't know what am I" << endl;
 }
 void Animal::Action() //Function definition for Action
 {
-	//Empty
+	cout << "I don't know what I should do" << endl;
 }
 
 void Animal::Introduce()//Function definition of Introduce
 {
 	cout <<"I am "<< getName()<<"and I am "<<Age<<" years old" << endl;
 }
+
+
 
 
 class Dog :public Animal//Declaration of class Dog with public inherited from class Animal
@@ -66,7 +66,6 @@ public:
 	virtual void Speak();//Virtual function Speak which can be overridden
 	virtual void Action();//Virtual function Action which can be overridden
 };
-
 Dog::Dog(string name, int age):Animal(name, age)//Function definition of overloaded constructor of class Dog
 {
 	//Copying class Dog data to class Animal
@@ -79,6 +78,7 @@ void Dog::Action()//Function definition for overridden Action
 {
 	cout << "Rawr" << endl;
 }
+
 
 
 
@@ -105,6 +105,9 @@ void PetDog::Action()//Function definition for overridden Action
 }
 
 
+
+
+
 class StrayDog :public Dog//Declaration of class StrayDog with public inherited from class Dog
 {
 public:
@@ -125,6 +128,8 @@ void StrayDog::Action()//Function definition for overridden Action
 {
 	cout << "Chase Cars" << endl;
 }
+
+
 
 
 
@@ -149,11 +154,15 @@ void Cat::Action()//Function definition for overridden Action
 	cout << "Playing with knit" << endl;
 }
 
+
+
+
+
 int main()
 {
 	int a;
-	Animal* Animals[7];
-	Animal* Random = &Animal("Sam", 10);
+	Animal* Animals[7];		//Declaring an array of 7 of object of Animal type pointer
+	Animal* Random = &Animal("Sam", 10);  //Declaring object pointers
 	Animal* Random1 = &Animal("Tom", 12);
 	Dog* Doge = &Dog("Doggy", 13);
 	StrayDog* StrayDoge = &StrayDog("Sobaka", 5);
@@ -161,7 +170,7 @@ int main()
 	PetDog* PetDoge1 = &PetDog("Calculus", 6);
 	Cat* Kris = &Cat("Kot", 5);
 
-	Animals[0] = Random;
+	Animals[0] = Random;		//Assigning object as elements of Animal array
 	Animals[1] = Random1;
 	Animals[2] = Doge;
 	Animals[3] = StrayDoge;
@@ -169,8 +178,8 @@ int main()
 	Animals[5] = PetDoge1;
 	Animals[6] = Kris;
 
-	Kris->Introduce();
-	for (a = 0; a < 7; a++)
+
+	for (a = 0; a < 7; a++)		//Looping the Speak and Introduce function of the object that are pointed to
 	{
 		Animals[a]->Introduce();
 		Animals[a]->Speak();
